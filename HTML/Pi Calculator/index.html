@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <title>Pi Calculator</title>
+    <link rel="shortcut icon" href="Pi.png" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Pi Calculator</h1>
+    <!-- <span> -->
+    Enter the number of digits to calculate:
+    <!-- </span> -->
+    <input id="digitsinput" />
+    <button id="start">Start</button><br />
+    <span>Number of digits done:</span> <span id="dcount">0</span><br />
+    <span>Terms:</span> <span id="terms">0</span><br />
+    <span>Time Elapsed:</span> <span id="elapsed"></span><br />
+    <b>Note: (Shown in hexadecimal until the final conversion)</b><br />
+    <span id="digits"></span>
+
+    <style>
+        *,
+        *::after,
+        *::before {
+            font-size: 35px;
+        }
+
+        div,
+        input {
+            user-select: none;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        let i, x, pi, startTime;
+
+        function doSomeCalcs() {
+            if (x > 0) {
+                for (let j = 0; j < 100; ++j) {
+                    x = (x * i) / ((i + 1n) * 4n);
+                    pi += x / (i + 2n);
+                    i += 2n;
+                }
+                const pistr16 = pi.toString(16);
+                document.getElementById("terms").innerHTML = (
+                    (i - 1n) /
+                    2n
+                ).toString();
+                document.getElementById("dcount").innerHTML = (
+                    (pistr16.length - x.toString(16).length) * 1.20412 -
+                    20
+                ).toFixed(0);
+
+                document.getElementById("digits").innerHTML = pistr16.replace(
+                    /.{10}/g,
+                    "$& "
+                );
+                document.getElementById("elapsed").innerHTML =
+                    ((new Date() - startTime) / 1000).toFixed(3) + " s";
+
+                setTimeout(doSomeCalcs, 0);
+            } else {
+                // After the last calculation, show in decimal
+                const base10start = new Date();
+                const pistr10 = (pi / 10n ** 20n).toString(10);
+                document.getElementById("dcount").innerHTML = (
+                    pistr10.length - 1
+                ).toFixed(0);
+                document.getElementById("digits").innerHTML = pistr10.replace(
+                    /.{10}/g,
+                    "$& "
+                );
+                document.getElementById("base10").innerHTML =
+                    ((new Date() - base10start) / 1000).toFixed(3) + " s";
+            }
+        }
+
+        function startCalcs(digits) {
+            i = 1n;
+            x = 3n * 10n ** (BigInt(digits) + 20n);
+            pi = x;
+            startTime = new Date();
+            setTimeout(doSomeCalcs, 0);
+        }
+
+        document.getElementById("start").onclick = function () {
+            const digitsstr = document.getElementById("digitsinput").value;
+            const digitsnum = parseInt(digitsstr);
+
+            if (digitsnum >= 1) {
+                startCalcs(digitsnum);
+            } else {
+                alert("Please enter a valid number of digits.");
+            }
+
+            return false;
+        };
+    </script>
+</body>
+
+</html>

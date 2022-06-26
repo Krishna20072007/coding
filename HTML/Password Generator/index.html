@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Generator</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Password Generator</h1>
+        <h3 class="password-display" id="passwordDisplay">Password</h3>
+        <form id="passwordGeneratorForm" class="form">
+            <label for="characterAmountNumber">Number Of Characters</label>
+            <div class="character-amount-container">
+                <input type="range" min="1" max="50" value="10" id="characterAmountRange">
+                <input class="number-input" type="number" min="1" max="50" value="10" id="characterAmountNumber">
+            </div>
+
+            <label for="includeUppercase">Include Uppercase</label>
+            <input type="checkbox" id="includeUppercase">
+
+            <label for="includeNumbers">Include Numbers</label>
+            <input type="checkbox" id="includeNumbers">
+
+            <label for="includeSymbols">Include Symbols</label>
+            <input type="checkbox" id="includeSymbols">
+
+            <button type="submit" class="btn">Generate Password</button>
+        </form>
+    </div>
+    <script defer>
+        const characterAmountRange = document.getElementById('characterAmountRange')
+        const characterAmountNumber = document.getElementById('characterAmountNumber')
+        const includeUppercaseElement = document.getElementById('includeUppercase')
+        const includeNumbersElement = document.getElementById('includeNumbers')
+        const includeSymbolsElement = document.getElementById('includeSymbols')
+        const form = document.getElementById('passwordGeneratorForm')
+        const passwordDisplay = document.getElementById('passwordDisplay')
+
+        const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
+        const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
+        const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
+        const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
+            arrayFromLowToHigh(58, 64)
+        ).concat(
+            arrayFromLowToHigh(91, 96)
+        ).concat(
+            arrayFromLowToHigh(123, 126)
+        )
+
+        characterAmountNumber.addEventListener('input', syncCharacterAmount)
+        characterAmountRange.addEventListener('input', syncCharacterAmount)
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            const characterAmount = characterAmountNumber.value
+            const includeUppercase = includeUppercaseElement.checked
+            const includeNumbers = includeNumbersElement.checked
+            const includeSymbols = includeSymbolsElement.checked
+            const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
+            passwordDisplay.innerText = password
+        })
+
+        function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
+            let charCodes = LOWERCASE_CHAR_CODES
+            if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)
+            if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
+            if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
+
+            const passwordCharacters = []
+            for (let i = 0; i < characterAmount; i++) {
+                const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+                passwordCharacters.push(String.fromCharCode(characterCode))
+            }
+            return passwordCharacters.join('')
+        }
+
+        function arrayFromLowToHigh(low, high) {
+            const array = []
+            for (let i = low; i <= high; i++) {
+                array.push(i)
+            }
+            return array
+        }
+
+        function syncCharacterAmount(e) {
+            const value = e.target.value
+            characterAmountNumber.value = value
+            characterAmountRange.value = value
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: black;
+            fill: black;
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: auto auto;
+            row-gap: 1rem;
+            column-gap: 3rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            margin: 0;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .character-amount-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .number-input {
+            width: 2rem;
+        }
+
+        .password-display {
+            background-color: white;
+            color: black;
+            padding: 1rem;
+            border: 1px solid #333;
+            height: 2rem;
+            width: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            word-break: break-all;
+            border-radius: .5rem;
+        }
+
+        .btn {  
+            grid-column: span 2;
+            background-color: transparent;
+            color: black;
+            padding: .5rem 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 2rem;
+        }
+    </style>
+</body>
+
+</html>

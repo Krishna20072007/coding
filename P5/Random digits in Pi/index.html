@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Finding random numbers in Pi</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0 15vw;
+            padding: 2vh;
+            position: absolute;
+            display: flex;
+        }
+
+        input {
+            font-size: 32pt;
+            position: absolute;
+        }
+
+        p {
+            font-size: 5em;
+            color: black;
+            top: 32pt;
+            position: absolute;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+    <script defer>
+        let digits, searchBox;
+        let indexP;
+
+        function preload() {
+            raw = loadStrings("Pi.txt");
+        }
+
+        function indexOf(txt, search) {
+            let start = search.charAt(0);
+            for (let i = 0; i < txt.length; i++) {
+                if (txt.charAt(i) === start) {
+                    let found = true;
+                    for (let j = 1; j < search.length; j++) {
+                        if (txt.charAt(i + j) !== search.charAt(j)) {
+                            found = false;
+                            break;
+                        }
+                    }
+                    if (found) {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        function searchItUp() {
+            let search = searchBox.value();
+            console.log(search);
+
+            let index = indexOf(digits, search);
+
+            if (index > 0) {
+                indexP.html(index - 1);
+            } else {
+                indexP.html("not found in the first 1 million digits");
+            }
+        }
+
+        function setup() {
+            noCanvas();
+
+            digits = raw[0];
+            searchBox = createInput("");
+            searchBox.input(searchItUp);
+            indexP = createP("Searching....");
+        }
+    </script>
+</body>
+
+</html>

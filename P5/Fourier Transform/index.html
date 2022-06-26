@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fourier Transform</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+</head>
+
+<body>
+  <style>
+    body {
+      background-color: #000;
+    }
+  </style>
+  <script defer>
+    let time = 0;
+    wave = [];
+    let height = window.innerHeight - 50;
+    let width = window.innerWidth - 8;
+    let z = 10;
+
+    console.log(z);
+
+    function setup() {
+      createCanvas(width, height);
+    }
+    function draw() {
+      background(0), translate(200, height / 2);
+      let e = 0,
+        t = 0;
+      for (let i = 0; i < z; i++) {
+        let n = e,
+          a = t,
+          l = 2 * i + 1,
+          h = (4 / (l * PI)) * 100;
+        (e += h * cos(l * time)),
+          (t += h * sin(l * time)),
+          stroke(255),
+          noFill(),
+          ellipse(n, a, 2 * h),
+          stroke(255),
+          line(n, a, e, t);
+      }
+      wave.unshift(t),
+        translate(200, 0),
+        line(e - 200, t, 0, wave[0]),
+        beginShape(),
+        noFill();
+      for (let e = 0; e < wave.length; e++) vertex(e, wave[e]);
+      endShape(), (time += 0.05), wave.length > width && wave.pop();
+    }
+  </script>
+</body>
+
+</html>
