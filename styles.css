@@ -243,14 +243,20 @@ body::-webkit-scrollbar:hover {
     visibility: hidden;
   }
 
+  body::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: #fff;
+  }
+  
   body::-webkit-scrollbar-thumb {
     background-color: #555;
     border-radius: 6px;
   }
-
-  body::-webkit-scrollbar {
-    width: 0.5em;
-    background-color: #fff;
+  
+  body::-webkit-scrollbar:hover {
+    background-color: #a2a2a2;
+    transition: all 0.5s ease-in-out;
+    border-radius: 6px;
   }
 
   .head {
