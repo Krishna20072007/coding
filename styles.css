@@ -202,7 +202,7 @@ a:hover {
 }
 
 .work-button:hover, .work-button:focus {
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
   background-color: #ddd;
 }
 
