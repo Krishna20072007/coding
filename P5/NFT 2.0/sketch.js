@@ -1,5 +1,4 @@
-function draw() {
-  frameRate(100)
+function setup() {
     angleMode(DEGREES);
     createCanvas(400, 400);
     noFill();
