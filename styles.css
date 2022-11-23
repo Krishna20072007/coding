@@ -201,7 +201,8 @@ a:hover {
   left: 3em;
 }
 
-.work-button:hover, .work-button:focus {
+.work-button:hover,
+.work-button:focus {
   transition: all 250ms ease-in-out;
   background-color: #ddd;
 }
@@ -221,6 +222,12 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: #555;
   border-radius: 6px;
+}
+
+.nft-section {
+  display: grid;
+  grid-template-columns: repeat(3, 28em);
+  transform: translateY(8em);
 }
 
 body::-webkit-scrollbar:hover {
@@ -247,12 +254,12 @@ body::-webkit-scrollbar:hover {
     width: 0.5em;
     background-color: #fff;
   }
-  
+
   body::-webkit-scrollbar-thumb {
     background-color: #555;
     border-radius: 6px;
   }
-  
+
   body::-webkit-scrollbar:hover {
     background-color: #a2a2a2;
     transition: all 0.5s ease-in-out;
@@ -313,14 +320,13 @@ body::-webkit-scrollbar:hover {
   .main-head {
     z-index: 100;
   }
+  .nft-section {
+    display: grid;
+    grid-template-columns: auto;
+    transform: translateY(8em);
+  }
 }
 
-.nft-section {
-  display: grid;
-  grid-template-columns: repeat(3, 28em);
-  transform: translateY(8em);
-
-}
 .nft-h1 {
   font-size: 2em;
   font-weight: bold;
@@ -328,5 +334,5 @@ body::-webkit-scrollbar:hover {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
+  text-align: center;
 }
