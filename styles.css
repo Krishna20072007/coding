@@ -314,3 +314,19 @@ body::-webkit-scrollbar:hover {
     z-index: 100;
   }
 }
+
+.nft-section {
+  display: grid;
+  grid-template-columns: repeat(3, 28em);
+  transform: translateY(8em);
+
+}
+.nft-h1 {
+  font-size: 2em;
+  font-weight: bold;
+  padding: 2em 1em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
