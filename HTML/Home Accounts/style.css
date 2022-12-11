@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --box-shadow: 0 10px 5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 * {
@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #f7f7f7;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,10 +27,11 @@ body {
 h1 {
     letter-spacing: 1px;
     margin: 0;
+    font-size: 2em;
 }
 
 h3 {
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid #fff;
     padding-bottom: 10px;
     margin: 40px 0 10px;
 }
@@ -55,21 +56,14 @@ h4 {
 }
 
 .inc-exp-container > div:first-of-type {
-    border-right: 1px solid #dedede;
+    border-right: 1px solid #fff;
 }
 
 .money {
     font-size: 20px;
     letter-spacing: 1px;
     margin: 5px 0;
-}
-
-.money.plus {
-    color: #2ecc71;
-}
-
-.money.minus {
-    color: #2ecc71;
+    color: #0f0;
 }
 
 label {
@@ -79,7 +73,7 @@ label {
 
 input[type='text'],
 input[type='number'] {
-    border: 1px solid #dedede;
+    border: 1px solid #fff;
     border-radius: 2px;
     display: block;
     font-size: 16px;
@@ -89,9 +83,9 @@ input[type='number'] {
 
 .btn {
     cursor: pointer;
-    background-color: #9c88ff;
+    background-color: #ffff4d;
     box-shadow: var(--box-shadow);
-    color: #fff;
+    color: #000;
     border: 0;
     display: block;
     font-size: 16px;
@@ -114,7 +108,7 @@ input[type='number'] {
 .list li {
     background-color: #fff;
     box-shadow: var(--box-shadow);
-    color: #333;
+    color: #000;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -148,4 +142,8 @@ input[type='number'] {
 
 .list li:hover .delete-btn {
     opacity: 1;
+}
+
+.text {
+    font-weight: bold;
 }
