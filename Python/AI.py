@@ -102,7 +102,7 @@ if __name__ == '__main__':
             speak("I am fine Sir")
             speak("How are you")
 
-        elif 'fine' in query or "good" in query:
+        elif 'fine' in query or 'good' in query:
             speak("It's good to know that your fine")
 
         elif 'exit' in query:
@@ -114,7 +114,7 @@ if __name__ == '__main__':
         elif 'joke' in query:
             speak(pyjokes.get_joke())
 
-        elif 'calculate" i'in  query:
+        elif 'calculate' in  query:
             app_id = "Wolframalpha api id"
             client = wolframalpha.Client(app_id)
             indx = query.lower().split().index('calculate')
@@ -128,24 +128,24 @@ if __name__ == '__main__':
             query = query.replace("search", "")
             webbrowser.open(query)
 
-        elif 'AI" in query':
+        elif 'AI in query':
             wishMe()
             speak("At your service Sir!")
 
-        elif 'wikipedia" i' in query:
+        elif 'wikipedia' in query:
             webbrowser.open("wikipedia.com")
 
-        elif 'Good Morning' or "Good Afternoon" or "Good Evening" in query:
+        elif 'Good Morning' or 'Good Afternoon' or 'Good Evening' in query:
             speak(query)
             speak("Sir")
 
-        elif 'how are you"'in query:
+        elif 'how are you'in query:
             speak("I'm fine Sir, how about you?")
 
-        elif 'i love you" ' in query:
+        elif 'i love you' in query:
             speak("I Love you too Sir")
 
-        elif 'how are you"'in query:
+        elif 'how are you'in query:
             speak("I am good Sir ! How are you")
 
         elif 'all good' in query:
