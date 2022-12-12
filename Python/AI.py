@@ -23,7 +23,7 @@ from urllib.request import urlopen
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[0].id)
 print(voices)
 
 
@@ -59,7 +59,7 @@ def takeCommand():
 
     try:
         print("Recognizing...")
-        query = r.recognize_google(audio, language='en-in')
+        query = r.recognize_google(audio, language='en-us')
         print(f"You said: {query}\n")
 
     except Exception as e:
@@ -108,13 +108,13 @@ if __name__ == '__main__':
         elif 'exit' in query:
             exit()
 
-        elif "who made you" in query or "who created you" in query:
+        elif 'who made you' in query or 'who created you' in query:
             speak("I have been created by Krishna.")
 
         elif 'joke' in query:
             speak(pyjokes.get_joke())
 
-        elif "calculate" in query:
+        elif 'calculate" i'in  query:
             app_id = "Wolframalpha api id"
             client = wolframalpha.Client(app_id)
             indx = query.lower().split().index('calculate')
@@ -128,19 +128,28 @@ if __name__ == '__main__':
             query = query.replace("search", "")
             webbrowser.open(query)
 
-        elif "AI" in query:
+        elif 'AI" in query':
             wishMe()
             speak("At your service Sir!")
 
-        elif "wikipedia" in query:
+        elif 'wikipedia" i' in query:
             webbrowser.open("wikipedia.com")
 
-        elif "Good Morning" or "Good Afternoon" or "Good Evening" in query:
+        elif 'Good Morning' or "Good Afternoon" or "Good Evening" in query:
             speak(query)
             speak("Sir")
 
-        elif "how are you" in query:
+        elif 'how are you"'in query:
             speak("I'm fine Sir, how about you?")
 
-        elif "i love you" in query:
+        elif 'i love you" ' in query:
             speak("I Love you too Sir")
+
+        elif 'how are you"'in query:
+            speak("I am good Sir ! How are you")
+
+        elif 'all good' in query:
+            speak('great to hear that')
+
+        elif 'i dont understand' in query:
+            speak('Ok')
