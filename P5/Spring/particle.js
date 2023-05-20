@@ -4,7 +4,7 @@ class Particle {
       this.acceleration = createVector(0, 0);
       this.velocity = createVector(0, 0);
       this.position = createVector(x, y);
-      this.mass = 1; // Let's do something better here!
+      this.mass = 1;
     }
   
     applyForce(force) {
@@ -13,7 +13,6 @@ class Particle {
       this.acceleration.add(f);
     }
   
-    // Method to update position
     update() {
       if (!this.locked) {
         this.velocity.mult(0.99);
@@ -22,8 +21,6 @@ class Particle {
         this.acceleration.mult(0);
       }
     }
-  
-    // Method to display
     show() {
       stroke(255);
       strokeWeight(2);
