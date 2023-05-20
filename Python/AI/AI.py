@@ -47,27 +47,29 @@ def wishMe():
     speak("I am AI Sir")
 
 
-def takeCommand():
+# def takeCommand():
 
-    r = sr.Recognizer()
+#     r = sr.Recognizer()
 
-    with sr.Microphone() as source:
+#     with sr.Microphone() as source:
 
-        print("Listening...")
-        r.pause_threshold = 1
-        audio = r.listen(source)
+#         print("Listening...")
+#         r.pause_threshold = 1
+#         audio = r.listen(source)
 
-    try:
-        print("Recognizing...")
-        query = r.recognize_google(audio, language='en-us')
-        print(f"You said: {query}\n")
+#     try:
+#         print("Recognizing...")
+#         query = r.recognize_google(audio, language='en-us')
+#         print(f"You said: {query}\n")
 
-    except Exception as e:
-        print(e)
-        print("Please try again")
-        return "None"
+#     except Exception as e:
+#         print(e)
+#         print("Please try again")
+#         return "None"
 
-    return query
+#     return query
+
+query = input("Command: ")
 
 
 if __name__ == '__main__':
@@ -76,7 +78,9 @@ if __name__ == '__main__':
     wishMe()
 
     while True:
-        query = takeCommand().lower()
+        # query = takeCommand().lower()
+        query = input("Command: ")
+
 
         if 'wikipedia' in query:
             speak('Searching Wikipedia...')
@@ -115,7 +119,7 @@ if __name__ == '__main__':
             speak(pyjokes.get_joke())
 
         elif 'calculate' in  query:
-            app_id = "Wolframalpha api id"
+            app_id = "2J73HU-6LVHEQE75Y"
             client = wolframalpha.Client(app_id)
             indx = query.lower().split().index('calculate')
             query = query.split()[indx + 1:]
