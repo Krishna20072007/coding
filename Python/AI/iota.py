@@ -1,3 +1,5 @@
+# IOTA -  Intelligent Overlord of Technological Advancements
+
 import subprocess
 import wolframalpha
 import pyttsx3
@@ -23,8 +25,7 @@ from urllib.request import urlopen
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
-print(voices)
+engine.setProperty('voice', voices[1].id)
 
 
 def speak(audio):
@@ -35,16 +36,16 @@ def speak(audio):
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
-        speak("Good Morning Sir!")
+        speak("Good Morning")
 
     elif hour >= 12 and hour < 18:
-        speak("Good Afternoon Sir!")
+        speak("Good Afternoon")
 
     else:
-        speak("Good Evening Sir!")
+        speak("Good Evening")
 
     name = ("AI")
-    speak("I am AI Sir")
+    speak("I am IOTA, Intelligent Overlord of Technological Advancements")
 
 
 # def takeCommand():
@@ -100,10 +101,10 @@ if __name__ == '__main__':
 
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("% H:% M:% S")
-            speak(f"Sir, the time is {strTime}")
+            speak(f", the time is {strTime}")
 
         elif 'how are you' in query:
-            speak("I am fine Sir")
+            speak("I am fine ")
             speak("How are you")
 
         elif 'fine' in query or 'good' in query:
@@ -132,25 +133,24 @@ if __name__ == '__main__':
             query = query.replace("search", "")
             webbrowser.open(query)
 
-        elif 'AI in query':
+        elif 'AI' in query:
             wishMe()
-            speak("At your service Sir!")
+            speak("At your service")
 
         elif 'wikipedia' in query:
             webbrowser.open("wikipedia.com")
 
         elif 'Good Morning' or 'Good Afternoon' or 'Good Evening' in query:
             speak(query)
-            speak("Sir")
 
-        elif 'how are you'in query:
-            speak("I'm fine Sir, how about you?")
+        elif 'how are you' in query:
+            speak("I'm fine , how about you?")
 
         elif 'i love you' in query:
-            speak("I Love you too Sir")
+            speak("I Love you too ")
 
         elif 'how are you'in query:
-            speak("I am good Sir ! How are you")
+            speak("I am good! How are you")
 
         elif 'all good' in query:
             speak('great to hear that')
