@@ -16,11 +16,9 @@ def send_email(sender_email, sender_password, receiver_email, subject, message):
 
 sender_email = "krishnakashab@gmail.com"
 sender_password = "rmxgjpaayhfcguol"
-# receiver_email = input("Enter receiver's email address: ")
-receiver_email = ["krishnakashab@gmail.com", "kamalmahek1610@gmail.com"]
+receiver_email = input("Enter receiver's email address: ")
 subject = input("Enter a subject: ")
 message = input("Enter a message: ")
 
-for i in range(len(receiver_email)):
-    send_email(sender_email, sender_password, str(receiver_email[i]), str(subject), str(message))
-    print(f"Sent email to {receiver_email[i]}, with the subject {subject}, and body {message}")
+send_email(sender_email, sender_password, str(receiver_email), str(subject), str(message))
+print(f"Sent email to {receiver_email}, with the subject {subject}, and body {message}")
