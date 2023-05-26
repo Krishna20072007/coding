@@ -1,7 +1,7 @@
 # IOTA -  Intelligent Overlord of Technological Advancements
 
 import subprocess
-import wolframalpha
+import wolframalpha_calculator
 import pyttsx3
 import tkinter
 import json
@@ -121,7 +121,7 @@ if __name__ == '__main__':
 
         elif 'calculate' in  query:
             app_id = "2J73HU-6LVHEQE75Y"
-            client = wolframalpha.Client(app_id)
+            client = wolframalpha_calculator.Client(app_id)
             indx = query.lower().split().index('calculate')
             query = query.split()[indx + 1:]
             res = client.query(' '.join(query))
