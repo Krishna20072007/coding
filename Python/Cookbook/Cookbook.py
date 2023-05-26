@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from openpyxl import Workbook, load_workbook
 
+
 def save_recipe():
     recipe_name = entry_recipe_name.get()
     ingredients = entry_ingredients.get("1.0", "end-1c")
@@ -31,10 +32,12 @@ def save_recipe():
     except FileNotFoundError:
         status_label.config(text="File not found.", fg="red")
 
+
 def clear_fields():
     entry_recipe_name.delete(0, tk.END)
     entry_ingredients.delete("1.0", tk.END)
     entry_instructions.delete("1.0", tk.END)
+
 
 def load_recipes():
     file_path = filedialog.askopenfilename(filetypes=[("Excel Files", "*.xlsx")])
@@ -59,6 +62,7 @@ def load_recipes():
                 status_label.config(text="Invalid file format.", fg="red")
         except FileNotFoundError:
             status_label.config(text="File not found.", fg="red")
+
 
 def display_recipe(event):
     selection = recipe_list.curselection()
@@ -86,10 +90,12 @@ def display_recipe(event):
 
                 break
 
+
 # Create the main window
 window = tk.Tk()
 window.title("Cookbook")
 window.geometry("600x400")
+window.resizable(False, False)
 
 # Create labels
 label_recipe_name = tk.Label(window, text="Recipe Name")
