@@ -25,7 +25,7 @@ def save_recipe():
         sheet.append([recipe_name, ingredients, instructions])
 
         # Save the workbook
-        workbook.save("recipes.xlsx")
+        workbook.save("xlsx/recipes.xlsx")
 
         clear_fields()
         status_label.config(text="Recipe saved successfully.", fg="green")

@@ -45,13 +45,13 @@ def save_tasks():
 
     for i, task in enumerate(tasks, start=2):
         sheet[f"A{i}"] = task
-
-    filename = "tasks.xlsx"
+    global filename
+    filename = "xlsx/tasks.xlsx"
     workbook.save(filename)
 
 def load_tasks():
     try:
-        workbook = load_workbook("tasks.xlsx")
+        workbook = load_workbook(filename)
         sheet = workbook["Tasks"]
         tasks.clear()
 

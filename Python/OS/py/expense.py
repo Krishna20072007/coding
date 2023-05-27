@@ -80,7 +80,7 @@ def save_expenses_to_excel():
             sheet.cell(row=row, column=2).value = expense[0]
             sheet.cell(row=row, column=3).value = expense[1]
 
-    workbook.save("expenses.xlsx")
+    workbook.save("xlsx/expenses.xlsx")
 
 # Create the main window
 root = tk.Tk()
