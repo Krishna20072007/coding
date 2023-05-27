@@ -17,8 +17,10 @@ def send_email(sender_email, sender_password, receiver_email, subject, message):
 sender_email = "krishnakashab@gmail.com"
 sender_password = "rmxgjpaayhfcguol"
 receiver_email = input("Enter receiver's email address: ")
+cc = input("Enter CC email address: ")
+bcc = input("Enter BCC email address: ") 
 subject = input("Enter a subject: ")
 message = input("Enter a message: ")
 
-send_email(sender_email, sender_password, str(receiver_email), str(subject), str(message))
+send_email(sender_email, sender_password, str(receiver_email), str(cc), str(bcc), str(subject), str(message))
 print(f"Sent email to {receiver_email}, with the subject {subject}, and body {message}")
