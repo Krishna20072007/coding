@@ -1,7 +1,5 @@
 import math
 from sympy import *
-import matplotlib.pyplot as plt
-import numpy as np
 
 while True:
     print("\nChoose the math operation.\n\n01 - Addition\n02 - Subtraction\n03 - Multiplication\n04 - Division\n05 - Modulo\n06 - Raising to a power\n07 - nth root\n08 - Logarithm\n09 - Natural Logarithm\n10 - Factorial\n11 - Sine\n12 - Cosine\n13 - Tangent\n14 - Arcsine\n15 - Arccos\n16 - Arctan\n17 - Absolute Value\n18 - Differentiation\n19 - Integration")
@@ -254,18 +252,6 @@ while True:
         expr = input("Enter an expression: ")
         expr_intr = integrate(expr, x)
         print("Intergration of expression with respect to x : {}".format(expr_intr) + " + c")
-
-        go_back = input('\nGo back to main menu? (y/n) ')
-        if go_back == 'y':
-            continue
-        else:
-            print("\nThank You for using my Function Calculator!!")
-            break
-
-    elif operation == "20":
-        x = Symbol('x')
-        poly = input("Enter a polynomial: ")
-        print(solve(poly, x))
 
         go_back = input('\nGo back to main menu? (y/n) ')
         if go_back == 'y':
