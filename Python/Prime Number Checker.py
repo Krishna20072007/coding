@@ -5,13 +5,13 @@ prime_flag = 0
 if(n > 1):
     for i in range(2, int(sqrt(n)) + 1):
         if (n == 1):
-            print("false, you entered 1")
+            print("Undefined, one is neither prime nor composite")
         elif (n % i == 0):
             prime_flag = 1
             break
     if (prime_flag == 0):
-        print("true")
+        print(f"{n} is prime")
     else:
-        print("false")
+        print(f"{n} is composite")
 else:
-    print("false")
+    print("Enter a positive number")

@@ -1,3 +1,6 @@
+import sys
+sys.set_int_max_str_digits(1000000)
+
 def collatz(num):
     while num != 1:
         print(num)
