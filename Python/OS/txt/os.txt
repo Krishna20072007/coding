@@ -1,0 +1,18 @@
+Time
+Alarm
+Iota
+Calculator
+Music
+Snake
+Pong
+2048
+Text Editor
+Email
+Fidget
+Flappy Bird
+Whatsapp
+Clock
+To-Do
+Expense
+Diary
+Cookbook
